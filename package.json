@@ -1,0 +1,49 @@
+{
+  "devDependencies": {
+    "fast-glob": "^3.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
+  },
+  "name": "joe-artist-ltimindtree",
+  "description": "[![Build status](https://github.com/shopify/dawn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shopify/dawn/actions/workflows/ci.yml?query=branch%3Amain)\r [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?color=informational)](/.github/CONTRIBUTING.md)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "braces": "^3.0.2",
+    "esbuild": "^0.18.20",
+    "fastq": "^1.15.0",
+    "fill-range": "^7.0.1",
+    "glob-parent": "^5.1.2",
+    "is-extglob": "^2.1.1",
+    "is-glob": "^4.0.3",
+    "is-number": "^7.0.0",
+    "merge2": "^1.4.1",
+    "micromatch": "^4.0.5",
+    "nanoid": "^3.3.6",
+    "picocolors": "^1.0.0",
+    "picomatch": "^2.3.1",
+    "postcss": "^8.4.30",
+    "queue-microtask": "^1.2.3",
+    "reusify": "^1.0.4",
+    "rollup": "^3.29.2",
+    "run-parallel": "^1.2.0",
+    "source-map-js": "^1.0.2",
+    "to-regex-range": "^5.0.1"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "shopify": "shopify theme dev --store=joe-artist-ltimimdtree.myshopify.com",
+    "build": "tsc && vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmedpowers/joe-artist-ltimindtree.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmedpowers/joe-artist-ltimindtree/issues"
+  },
+  "homepage": "https://github.com/ahmedpowers/joe-artist-ltimindtree#readme"
+}

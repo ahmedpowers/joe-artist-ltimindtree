@@ -1,0 +1,10 @@
+customElements.get("custom-cart-item")||customElements.define("custom-cart-item",class extends HTMLElement{constructor(){super(),this.cartWrapper=document.getElementById("app"),this.removeBtn=this.querySelector(".remove-btn"),this.removeBtn&&(this.removeBtn.onclick=t=>{t.target instanceof HTMLButtonElement&&t.target.dataset.index&&this.removeItem(t.target.dataset.index)});const a=this.querySelector(".add-btn");a&&(a.onclick=t=>{t.target instanceof HTMLButtonElement&&t.target.dataset.index&&t.target.dataset.qty&&this.updateQuantity(t.target.dataset.index,parseInt(t.target.dataset.qty)+1)});const e=this.querySelector(".minus-btn");e&&(e.onclick=t=>{t.target instanceof HTMLButtonElement&&t.target.dataset.index&&t.target.dataset.qty&&this.updateQuantity(t.target.dataset.index,parseInt(t.target.dataset.qty)-1)})}async cartData(){return await fetch(`${routes.cart_url}.json`).then(e=>e.json()).catch(e=>{console.error(e)})}async renderCart(){this.cartWrapper&&(this.cartWrapper.innerHTML="",this.cartData().then(a=>{console.log(a),a.items.forEach((e,t)=>{var s;const n=String(t+1),r=document.createElement("div");r.dataset.index=n,r.classList.add("cart__item"),r.innerHTML=`
+              <custom-cart-item>
+                  <p>Name: ${e.title}</p>
+                  <p>Price: £${e.line_price/100}</p>
+                  <p>Quantity: ${e.quantity}</p>
+                  <button class="add-btn" data-index="${n}" data-qty="${e.quantity}">+1</button>
+                  <button  class="minus-btn" data-index="${n}" data-qty="${e.quantity}" ${e.quantity===1?"disabled":""}>-1</button>
+                  <button class="remove-btn" data-index="${n}">Remove</button>
+                  </custom-cart-item>
+              `,(s=this.cartWrapper)==null||s.appendChild(r)})}))}async updateQuantity(a,e){const t=JSON.stringify({line:a,quantity:e});fetch(`${routes.cart_change_url}.json`,{...fetchConfig(),body:t}).then(n=>n.json()).then(n=>{console.log(n),this.renderCart()}).catch(n=>{console.error(n)})}removeItem(a){this.updateQuantity(a,0)}});

@@ -1,0 +1,20 @@
+    
+    <script src="{{ 'custom-cart.js' | asset_url }}" defer="defer"></script>
+
+    <div class="page-width">
+      <div id="app">
+        {%- for item in cart.items -%}
+          <custom-cart-item>
+            <div class="cart__item" data-index="{{ item.index | plus: 1 }}">
+              <p>Name: {{ item.title }}</p>
+              <p>Price: {{ item.line_price | money_with_currency }}</p>
+              <p>Quantity: {{ item.quantity }}</p>
+              <button class="add-btn" data-index="{{ item.index | plus: 1 }}" data-qty="{{ item.quantity }}">+1</button>
+              <button class="minus-btn" data-index="{{ item.index | plus: 1 }}" {% if item.quantity == 1 %} disabled {% endif %}>-1</button>
+              <button class="remove-btn" data-index="{{ item.index | plus: 1 }}">Remove</button>
+            </div>
+          </custom-cart-item>
+          
+        {% endfor  %}
+      </div>
+    </div>
